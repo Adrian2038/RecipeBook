@@ -18,10 +18,41 @@
 {
     [super viewDidLoad];
     
-    self.recipeNameLabel.text = self.recipeName;
+//    NSLog(@"RecipeDetailViewController view Did Load ");
     
-    NSLog(@"The recipe Label's name is :%@", self.recipeNameLabel.text);
+    self.recipeImageView.image = [UIImage imageNamed:self.recipe.image];
+    self.recipeNameLabel.text = self.recipe.name;
+    self.recipePrepLabel.text = self.recipe.prepTime;
+    
+    NSMutableString *ingredientText = [NSMutableString string];
+    
+    for (NSString *ingredient in self.recipe.ingredients) {
+        [ingredientText appendFormat:@"%@\n", ingredient];
+    }
+    self.recipeIngredientsTextView.text = ingredientText;
 }
+
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    NSLog(@"RecipeDetailViewController view Will Appear ");
+//}
+//
+//- (void)viewDidAppear:(BOOL)animated
+//{
+//    [super viewDidAppear:animated];
+//    
+//    NSLog(@"RecipeDetailViewController view Did Appear ");
+//}
+//
+//- (void)viewWillDisappear:(BOOL)animated
+//{
+//    NSLog(@"RecipeDetailViewController view Will Disappear ");
+//}
+//
+//- (void)viewDidDisappear:(BOOL)animated
+//{
+//    NSLog(@"RecipeDetailViewController view Did Disappear ");
+//}
 
 /*
 #pragma mark - Navigation
@@ -32,5 +63,10 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)dealloc
+{
+    NSLog(@"dealloc self %@", self);
+}
 
 @end
